@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style-sheets/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+        <div class="date-stamp">
+            <span id="current-date">Loading...</span>
+            <span id="current-time">00:00 AM</span>
+        </div>
+                           
+<section class="plant-header">
+    <div class="plant-video-container">
+        <video id="plant-video" muted playsinline>
+            <source src="assets/new.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="bar-container">
+        <div id="progress-fill" class="progress-fill"></div>
+    </div>
+    <p class="status-text">Today's Progress🌝: <span id="percent">0</span>%</p>
+</section>
+
+        <section class="todo-card">
+            <div class="washi-tape"></div>
+            <h3>✨ Today's Seeds</h3>
+            <div class="input-area">
+                <input type="text" id="task-input" placeholder="Plant a task...">
+                <button id="add-btn" onclick="addTask()">Add</button>
+            </div>
+            <div id="task-list" class="task-container"></div>
+        </section>
+
+        <nav class="folder-grid">
+            <a href="syllabus.html" class="folder">
+                <div class="clip"></div>
+                <span class="folder-icon">📖</span>
+                <span class="folder-name">Syllabus</span>
+                <div class="badge" id="syllabus-stat">0%</div>
+            </a>
+            <a href="history.html" class="folder">
+                <div class="clip"></div>
+                <span class="folder-icon">📜</span>
+                <span class="folder-name">History</span>
+            </a>
+            <a href="library.html" class="folder">
+                <div class="clip"></div>
+                <span class="folder-icon">📁</span>
+                <span class="folder-name">Library</span>
+            </a>
+        </nav>
+    </div>
+
+    <div id="surprise-jar" class="surprise-jar" onclick="showSurprise()">
+    💌
+</div>
+
+<div id="surprise-overlay" class="surprise-modal" onclick="closeSurprise()">
+    <div class="surprise-content" onclick="event.stopPropagation()">
+        <span class="close-heart" onclick="closeSurprise()">💖</span>
+        <p id="surprise-text"></p>
+    </div>
+</div>
+
+    <a href="notes.html" class="fab">
+        <span class="fab-icon">📝</span>
+    </a>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+:root {
+    --bg: #fffcf9;
+    --brown: #8d6e63;
+    --sage: #a8bc94;
+    --white: #ffffff;
+    --wood: #e0c097;
+    --text: #5d4037;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Quicksand', sans-serif;
+    padding: 20px;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+}
+
+.library-wrapper { width: 100%; max-width: 400px; }
+.library-header { text-align: center; margin-bottom: 30px; }
+.back-link { text-decoration: none; color: var(--brown); font-weight: bold; font-size: 0.9rem; }
+
+/* THE AESTHETIC SHELF */
+.shelf {
+    margin-bottom: 45px;
+    position: relative;
+}
+
+.shelf-title { 
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    border-left: 5px solid var(--sage);
+    color: var(--brown);
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 15px 5px;
+    border-bottom: 12px solid var(--wood); /* The Wooden Shelf */
+    border-radius: 0 0 8px 8px;
+}
+
+/* THE POLAROID CARDS */
+.resource-card {
+    background: var(--white);
+    padding: 20px 10px;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Washi Tape Effect */
+.resource-card::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    width: 50px;
+    height: 18px;
+    background: rgba(168, 188, 148, 0.5); /* Sage tape */
+    transform: rotate(-2deg);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.resource-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); }
+.res-icon { font-size: 30px; }
+
+/* MODAL / POPUP STYLING */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(93, 64, 55, 0.4); /* Soft brown tint */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background: var(--bg);
+    width: 85%;
+    max-width: 350px;
+    max-height: 75vh;
+    padding: 25px;
+    border-radius: 30px;
+    overflow-y: auto;
+    position: relative;
+    border: 3px solid var(--wood);
+}
+
+.modal-content h2 { color: var(--brown); margin-bottom: 15px; font-size: 1.3rem; }
+
+.pdf-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    background: white;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.modal-close-btn {
+    width: 100%;
+    background: var(--brown);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}

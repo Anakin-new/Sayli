@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Vault - Sayli</title>
+    <link rel="stylesheet" href="style-sheets/library.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="library-wrapper">
+        <header class="library-header">
+            <a href="dashboard.html" class="back-link">← Garden</a>
+            <h1>Study Vault 📚</h1>
+            <p>Abhi thoda hi content h yha🤧</p>
+        </header>
+
+        <div id="shelf-container"></div>
+    </div>
+
+    <div id="pdf-modal" class="modal" onclick="closePDFs()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h2 id="modal-title">Chapters</h2>
+            <div id="chapter-pdf-list"></div>
+            <button class="modal-close-btn" onclick="closePDFs()">Back to Library</button>
+        </div>
+    </div>
+
+    <script src="js/library.js"></script>
+</body>
+</html>

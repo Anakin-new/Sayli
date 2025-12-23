@@ -1,0 +1,53 @@
+body {
+    background-color: #fff9f2;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.notes-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #a47e65;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+h1 { color: #a47e65; margin-top: 10px; }
+
+#full-note-area {
+    flex-grow: 1;
+    width: 100%;
+    padding: 10px 20px 10px 50px; /* Extra left padding for the red margin line */
+    border: none;
+    border-radius: 15px;
+    background: white;
+    
+    /* THE MAGIC: Lined paper + Red Margin */
+    background-image: 
+        linear-gradient(90deg, transparent 39px, #abced4 39px, #abced4 41px, transparent 41px), /* Vertical Blue/Red Line */
+        linear-gradient(#eee .1em, transparent .1em); /* Horizontal Lines */
+    background-size: 100% 30px; /* This must be exactly 30px */
+    
+    /* THE SYNC: Text must match the 30px background size */
+    line-height: 30px; 
+    padding-top: 30px; /* Align first line of text to first line of paper */
+    
+    font-size: 1.1rem;
+    font-family: 'Quicksand', sans-serif;
+    color: #444;
+    outline: none;
+    resize: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}

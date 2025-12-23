@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayli's Scratchpad</title>
+    <link rel="stylesheet" href="style-sheets/notes.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="notes-wrapper">
+        <header>
+            <a href="dashboard.html" class="back-link">← Save & Exit</a>
+            <h1>Scratchpad ✍️</h1>
+        </header>
+        
+        <textarea id="full-note-area" placeholder="Start typing your study notes here..."></textarea>
+    </div>
+
+    <script>
+        const area = document.getElementById('full-note-area');
+        // Load
+        area.value = localStorage.getItem('sayli_full_notes') || "";
+        // Auto-save
+        area.addEventListener('input', () => {
+            localStorage.setItem('sayli_full_notes', area.value);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+:root {
+    --bg: #fff9f2;
+    --brown: #a47e65;
+    --sage: #7fb069;
+    --white: #ffffff;
+    --text: #4a4a4a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    font-family: 'Quicksand', sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.syllabus-wrapper { width: 100%; max-width: 450px; }
+
+/* --- HEADER --- */
+header {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(164, 126, 101, 0.1);
+    border-top: 6px solid var(--sage);
+}
+
+.back-link {
+    text-decoration: none;
+    color: white;
+    background-color: var(--brown);
+    padding: 8px 18px;
+    border-radius: 12px 4px 12px 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+/* --- PROGRESS BARS --- */
+.total-progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: var(--sage);
+    transition: width 0.5s ease;
+}
+
+/* --- THE ACCORDION HEADERS (The Fix) --- */
+.subject-section {
+    background: var(--white);
+    margin-bottom: 12px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #f0e6dd;
+}
+
+summary {
+    list-style: none;
+    display: flex;
+    justify-content: space-between; /* Pushes content to edges */
+    align-items: center; /* Vertical center */
+    padding: 15px;
+    cursor: pointer;
+    user-select: none;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+/* Left side: Icon + Name */
+.sub-title {
+    font-weight: 700;
+    color: var(--brown);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Right side: % and Mini Bar */
+.subject-progress-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#maths-percent, #reasoning-percent, #english-percent, #gk-percent {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--sage);
+    min-width: 35px;
+    text-align: right;
+}
+
+.mini-bar {
+    width: 50px;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mini-fill {
+    height: 100%;
+    background: var(--sage);
+    transition: width 0.4s ease;
+}
+
+/* --- CHAPTER LIST --- */
+.chapter-list {
+    background: #fdfdfd;
+    border-top: 1px solid #f0f0f0;
+}
+
+.topic-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f9f9f9;
+    font-size: 0.85rem;
+}
+
+.num-input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    text-align: center;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    color: var(--brown);
+}
