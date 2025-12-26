@@ -2,39 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <link rel="manifest" href="manifest.json">
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#7fb069">
-
     <link rel="stylesheet" href="style-sheets/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 </head>
-
-
 <body>
 
-    <div class="dashboard-wrapper">
-        <div class="date-stamp">
-            <span id="current-date">Loading...</span>
-            <span id="current-time">00:00 AM</span>
+    <div id="sidebar" class="sidebar" style="position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background: white; z-index: 10001; transition: 0.3s; padding: 40px 25px; box-shadow: 10px 0 20px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h3 style="color: #a47e65;">Menu</h3>
+            <span onclick="document.getElementById('sidebar').style.left='-280px'; document.getElementById('sidebar-overlay').style.display='none';" style="font-size: 30px; cursor: pointer; color: #7fb069;">×</span>
         </div>
-                           
-<section class="plant-header">
-    <div class="plant-video-container">
-        <video id="plant-video" muted playsinline>
-            <source src="assets/new.mp4" type="video/mp4">
-        </video>
+        <nav>
+            <a href="syllabus.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4a4a4a; font-weight: 700; margin-bottom: 25px;">
+                <span>📖</span> Syllabus <span id="syllabus-stat" style="margin-left: auto; color: #7fb069;">0%</span>
+            </a>
+            <a href="test.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4a4a4a; font-weight: 700; margin-bottom: 25px;">
+                <span>✍️</span> Test Mode
+            </a>
+            <a href="history.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4a4a4a; font-weight: 700; margin-bottom: 25px;">
+                <span>📜</span> History
+            </a>
+            <a href="library.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4a4a4a; font-weight: 700; margin-bottom: 25px;">
+                <span>📁</span> Library
+            </a>
+            <a href="notes.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none; color: #4a4a4a; font-weight: 700; margin-bottom: 25px;">
+                <span>📝</span> My Notes
+            </a>
+        </nav>
     </div>
-    <div class="bar-container">
-        <div id="progress-fill" class="progress-fill"></div>
-    </div>
-    <p class="status-text">Today's Progress🌝: <span id="percent">0</span>%</p>
-</section>
+
+    <div id="sidebar-overlay" onclick="document.getElementById('sidebar').style.left='-280px'; this.style.display='none';" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); display: none; z-index: 10000; backdrop-filter: blur(3px);"></div>
+
+    <div class="dashboard-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <div onclick="document.getElementById('sidebar').style.left='0'; document.getElementById('sidebar-overlay').style.display='block';" style="cursor: pointer; display: flex; flex-direction: column; gap: 5px;">
+                <div style="width: 25px; height: 3px; background: #7fb069; border-radius: 5px;"></div>
+                <div style="width: 25px; height: 3px; background: #7fb069; border-radius: 5px;"></div>
+                <div style="width: 25px; height: 3px; background: #7fb069; border-radius: 5px;"></div>
+            </div>
+            <div class="date-stamp">
+                <span id="current-date">Loading...</span>
+                <span id="current-time">00:00 AM</span>
+            </div>
+        </div>
+                            
+        <section class="plant-header">
+            <div class="plant-video-container">
+                <video id="plant-video" muted playsinline>
+                    <source src="assets/new.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="bar-container">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <p class="status-text">Today's Progress🌝: <span id="percent">0</span>%</p>
+        </section>
 
         <section class="todo-card">
             <div class="washi-tape"></div>
@@ -46,47 +72,26 @@
             <div id="task-list" class="task-container"></div>
         </section>
 
-        <nav class="folder-grid">
-            <a href="syllabus.html" class="folder">
-                <div class="clip"></div>
-                <span class="folder-icon">📖</span>
-                <span class="folder-name">Syllabus</span>
-                <div class="badge" id="syllabus-stat">0%</div>
-            </a>
-            <a href="history.html" class="folder">
-                <div class="clip"></div>
-                <span class="folder-icon">📜</span>
-                <span class="folder-name">History</span>
-            </a>
-            <a href="library.html" class="folder">
-                <div class="clip"></div>
-                <span class="folder-icon">📁</span>
-                <span class="folder-name">Library</span>
-            </a>
-        </nav>
-    </div>
+        </div>
 
-    <div id="surprise-jar" class="surprise-jar" onclick="showSurprise()">
-    💌
-</div>
+    <div id="surprise-jar" class="surprise-jar" onclick="showSurprise()">💌</div>
 
-<div id="surprise-overlay" class="surprise-modal" onclick="closeSurprise()">
-    <div class="surprise-content" onclick="event.stopPropagation()">
-        <span class="close-heart" onclick="closeSurprise()">💖</span>
-        <p id="surprise-text"></p>
+    <div id="surprise-overlay" class="surprise-modal" onclick="closeSurprise()">
+        <div class="surprise-content" onclick="event.stopPropagation()">
+            <span class="close-heart" onclick="closeSurprise()">💖</span>
+            <p id="surprise-text"></p>
+        </div>
     </div>
-</div>
 
     <a href="notes.html" class="fab">
         <span class="fab-icon">📝</span>
     </a>
-
+    <audio id="pop-sound" src="assets/pop.mp3" preload="auto"></audio>
     <script src="js/dashboard.js"></script>
     <script>
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js');
     }
-</script>
+    </script>
 </body>
 </html>
-
