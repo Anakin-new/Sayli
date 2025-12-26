@@ -1,7 +1,9 @@
-const CACHE_NAME = 'sayli-garden-v2';
+const CACHE_NAME = 'sayli-garden-v3';
 
 // List every file needed to make the app run offline
 const ASSETS = [
+    './',                 // Covers index.html if it's the root
+    './index.html',       // Explicitly add login/landing page
     './dashboard.html',
     './syllabus.html',
     './history.html',
@@ -40,3 +42,4 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
