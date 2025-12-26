@@ -209,6 +209,26 @@ function toggleTask(cb) {
     updateGarden();
 };
 
+// --- LOGIN & LOGOUT LOGIC ---
+function logout() {
+    // Optional: Only clear specific items like 'username' 
+    // localStorage.removeItem('username'); 
+    
+    // Or clear everything to reset the app entirely:
+    localStorage.clear(); 
+    
+    window.location.href = 'index.html';
+}
+
+// Check if user should be here (Optional Security)
+// If you want to force them to login if they haven't:
+/*
+if (!localStorage.getItem('last_opened_date')) {
+    window.location.href = 'index.html';
+}
+*/
+
 function closeSurprise() {
     document.getElementById('surprise-overlay').style.display = "none";
 };
+
