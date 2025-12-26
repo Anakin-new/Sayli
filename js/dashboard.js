@@ -82,6 +82,14 @@ function renderTask(text, isDone) {
 
 function toggleTask(cb) {
     cb.nextElementSibling.classList.toggle('done-text');
+    if (cb.checked) {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#7fb069', '#f2c6c2', '#a47e65'] // Using Sayli's app colors!
+        });
+    }
     saveData();
     updateGarden();
 }
@@ -156,17 +164,51 @@ const myMessages = [
     "World tour v kr skte😓"
 ];
 
+// FOR THE JAR SURPRISE
 function showSurprise() {
     const modal = document.getElementById('surprise-overlay');
     const textEl = document.getElementById('surprise-text');
-    
-    // Pick a random message
+    const sound = document.getElementById('pop-sound');
+
+    // Play your custom sound
+    if (sound) {
+        sound.currentTime = 0; 
+        sound.play().catch(e => console.log("Sound play blocked until user interacts"));
+    }
+
+    // Fire Confetti
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#7fb069', '#f2c6c2', '#a47e65'],
+        zIndex: 3000
+    });
+
     const randomMsg = myMessages[Math.floor(Math.random() * myMessages.length)];
-    
     textEl.innerText = randomMsg;
     modal.style.display = "flex";
 }
 
+// FOR TASK COMPLETION (Update your existing toggleTask)
+function toggleTask(cb) {
+    cb.nextElementSibling.classList.toggle('done-text');
+    
+    if (cb.checked) {
+        const sound = document.getElementById('pop-sound');
+        if (sound) { sound.currentTime = 0; sound.play(); }
+
+        confetti({
+            particleCount: 50,
+            spread: 50,
+            origin: { y: 0.8 },
+            colors: ['#7fb069', '#f2c6c2']
+        });
+    }
+    saveData();
+    updateGarden();
+};
+
 function closeSurprise() {
     document.getElementById('surprise-overlay').style.display = "none";
-}
+};
