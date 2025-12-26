@@ -14,17 +14,17 @@ body {
     padding: 20px;
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .dashboard-wrapper { width: 100%; max-width: 400px; display: flex; flex-direction: column; }
 
 /* Date Stamp */
-.date-stamp { text-align: right; margin-bottom: 10px; color: var(--brown); }
+.date-stamp { text-align: right; color: var(--brown); }
 #current-time { display: block; font-size: 1.2rem; font-weight: 700; color: var(--sage); }
 
 /* Plant & Bar */
 .plant-header { text-align: center; margin-bottom: 25px; }
-#plant-stage { font-size: 70px; margin-bottom: 10px; }
 .bar-container { background: #e6dfd5; height: 12px; border-radius: 10px; overflow: hidden; margin: 10px 0; }
 .progress-fill { height: 100%; width: 0%; background: var(--sage); transition: width 0.5s ease; }
 
@@ -37,129 +37,21 @@ body {
 .task-item { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .done-text { text-decoration: line-through; opacity: 0.5; }
 
-/* Folder Grid Fix (Forces 3 in a row) */
-.folder-grid { 
-    display: flex; 
-    gap: 10px; 
-    margin-top: 25px; 
-    width: 100%;
-}
-.folder { 
-    flex: 1; 
-    background: var(--white); 
-    padding: 15px 5px; 
-    border-radius: 12px; 
-    text-align: center; 
-    text-decoration: none; 
-    color: #4a4a4a; 
-    position: relative; 
-    border-bottom: 4px solid var(--sage);
-}
-.clip { width: 8px; height: 20px; border: 2px solid #bdc3c7; border-radius: 3px; position: absolute; top: -10px; left: 10px; background: #ecf0f1; }
-.folder-icon { font-size: 24px; display: block; }
-.folder-name { font-size: 0.8rem; font-weight: bold; }
-.badge { font-size: 0.7rem; color: var(--sage); font-weight: bold; }
+/* Plant Video */
+.plant-video-container { width: 200px; height: 200px; margin: 0 auto 10px; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+#plant-video { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
-.fab {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    width: 60px;
-    height: 60px;
-    background-color: var(--sage);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 1000;
-    transition: transform 0.2s, background-color 0.2s;
-}
+/* Surprise Jar */
+.surprise-jar { position: fixed; bottom: 25px; left: 25px; font-size: 30px; cursor: pointer; background: white; width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; border-radius: 50%; box-shadow: 0 4px 15px rgba(164, 126, 101, 0.2); transition: transform 0.3s ease; z-index: 100; }
+.surprise-jar:hover { animation: shake 0.5s infinite; }
 
-.fab:hover {
-    transform: scale(1.1) rotate(5deg);
-    background-color: #6a9657;
-}
+/* FAB */
+.fab { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: var(--sage); border-radius: 50%; display: flex; justify-content: center; align-items: center; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000; }
+.fab-icon { font-size: 1.8rem; }
 
-.fab-icon {
-    font-size: 1.8rem;
-}
-
-.plant-video-container {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-#plant-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%; /* Optional: keeps it in a nice circle */
-}
-
-.surprise-jar {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    font-size: 30px;
-    cursor: pointer;
-    background: white;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(164, 126, 101, 0.2);
-    transition: transform 0.3s ease;
-    z-index: 100;
-}
-
-.surprise-jar:hover { transform: scale(1.2) rotate(10deg); }
-
-/* The Popup Styling */
-.surprise-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255, 252, 249, 0.8);
-    backdrop-filter: blur(5px);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-}
-
-.surprise-content {
-    background: #fff;
-    padding: 40px 30px;
-    border-radius: 30px;
-    text-align: center;
-    max-width: 300px;
-    border: 3px solid #f8d7da;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-}
-
-#surprise-text {
-    font-family: 'Quicksand', sans-serif;
-    color: #8d6e63;
-    font-size: 1.1rem;
-    font-weight: 700;
-    line-height: 1.6;
-}
-
-.close-heart {
-    display: block;
-    margin-top: 20px;
-    cursor: pointer;
-    font-size: 24px;
-}
+/* Modal */
+.surprise-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 252, 249, 0.8); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; }
+.surprise-content { background: #fff; padding: 40px 30px; border-radius: 30px; text-align: center; max-width: 300px; border: 3px solid #f8d7da; }
 
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
@@ -167,9 +59,4 @@ body {
   20% { transform: translate(-3px, 0px) rotate(1deg); }
   30% { transform: translate(3px, 2px) rotate(0deg); }
   100% { transform: translate(1px, 1px) rotate(0deg); }
-}
-
-.surprise-jar:hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
 }
