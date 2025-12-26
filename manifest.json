@@ -1,7 +1,7 @@
 {
   "name": "Sayli's Garden",
   "short_name": "Sayli",
-  "start_url": "dashboard.html",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fff9f2",
   "theme_color": "#7fb069",
@@ -19,3 +19,4 @@
     }
   ]
 }
+
