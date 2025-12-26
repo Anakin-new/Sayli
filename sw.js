@@ -17,13 +17,15 @@ const ASSETS = [
     './style-sheets/notes.css',
     './js/dashboard.js',
     './js/library.js',
+    './js/auth.js',
     './js/syllabus-script.js',
     './js/test.js',              // Added: The test logic (timer, scoring)
     './js/test-data.js',         // Added: Your 50 Percentage questions
     './assets/new.mp4',
     './assets/pop.mp3',          // Added: Your custom sound file
     './manifest.json',
-    './assets/icon.png'          // Added: Your main icon
+    './assets/icon.png'        // Added: Your main icon
+     
 ];
 
 // Install Event
@@ -43,6 +45,7 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
 
 
 
