@@ -9,7 +9,8 @@ const ASSETS = [
     './history.html',
     './library.html',
     './notes.html',
-    './test.html',               // Added: The new Test Mode page
+    './test.html', 
+    './style-sheets/auth.css',
     './style-sheets/dashboard.css',
     './style-sheets/syllabus.css',
     './style-sheets/library.css',
@@ -42,5 +43,6 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
 
 
