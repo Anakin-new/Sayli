@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sayli-garden-v3';
+const CACHE_NAME = 'sayli-garden-v4';
 
 // List every file needed to make the app run offline
 const ASSETS = [
@@ -42,4 +42,5 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
 
