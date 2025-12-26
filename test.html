@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Test Mode ✍️</title>
+    <link rel="stylesheet" href="style-sheets/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        .test-container { max-width: 400px; width: 90%; margin: 20px auto; }
+        .timer-header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 15px; border-radius: 15px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: sticky; top: 10px; z-index: 100; }
+        .timer { color: #e74c3c; font-weight: 700; font-size: 1.2rem; }
+        .q-card { background: white; padding: 25px; border-radius: 20px; margin-bottom: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .option { display: block; padding: 12px; border: 2px solid #f0e6dd; border-radius: 10px; margin-top: 10px; cursor: pointer; transition: 0.3s; }
+        .option input { display: none; }
+        .option:has(input:checked) { border-color: var(--sage); background: #fafff5; }
+        .submit-btn { width: 100%; background: var(--sage); color: white; border: none; padding: 15px; border-radius: 15px; font-weight: 700; font-size: 1rem; cursor: pointer; }
+        #selection-screen { text-align: center; }
+        select { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 2px solid #f0e6dd; font-family: 'Quicksand'; }
+        
+        /* Modal Adjustments for Review */
+        .surprise-content { max-height: 85vh; overflow-y: auto; width: 90%; max-width: 350px; }
+        .review-item { text-align: left; padding: 15px; border-radius: 12px; margin-top: 15px; border: 1px solid #eee; }
+        .correct-bg { background: #f0fff4; border-color: #c6f6d5; }
+        .wrong-bg { background: #fff5f5; border-color: #fed7d7; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div id="selection-screen">
+            <h2 style="color: var(--brown); margin-bottom: 20px;">Choose Your Test ✍️</h2>
+            <select id="subject-select" onchange="loadChapters()">
+                <option value="">-- Select Subject --</option>
+                <option value="Maths">Maths</option>
+                <option value="Reasoning">Reasoning</option>
+                <option value="English">English</option>
+                <option value="History">History</option>
+                <option value="Geo">Geo</option>
+                <option value="Polity">Polity</option>
+                <option value="Economics">Economics</option>
+                <option value="Science">Science</option>
+                <option value="Computer">Computer</option>
+                <option value="Static GK">Static GK</option>
+                <option value="Current Affairs">Current Affairs</option>
+            </select>
+            <select id="chapter-select">
+                <option value="">-- Select Chapter --</option>
+            </select>
+            <button class="submit-btn" style="margin-top: 20px;" onclick="startTest()">Start Test ✨</button>
+        </div>
+
+        <div id="test-screen" style="display: none;">
+            <div class="timer-header">
+                <span id="test-info" style="color: var(--brown); font-weight: 700;">Subject</span>
+                <span class="timer">⏳ <span id="time-left">10:00</span></span>
+            </div>
+            <div id="questions-area"></div>
+            <button class="submit-btn" onclick="finishTest()">Submit Test ✅</button>
+        </div>
+    </div>
+
+    <div id="result-modal" class="surprise-modal">
+        <div class="surprise-content">
+            <h2 id="result-score" style="color: var(--sage); font-size: 2.5rem;">0/0</h2>
+            <p id="result-msg" style="margin: 10px 0; font-weight: 500;"></p>
+            
+            <button class="submit-btn" style="background: var(--brown); margin-bottom: 10px;" onclick="showReview()">Review Answers 🔍</button>
+            <button class="submit-btn" style="margin-bottom: 15px;" onclick="location.reload()">Try Another</button>
+            
+            <div id="review-area" style="display: none;"></div>
+
+            <br>
+            <a href="dashboard.html" style="color: var(--brown); text-decoration: none; font-weight: 700;">Back to Garden 🌸</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="js/test-data.js"></script>
+    <script src="js/test.js"></script>
+</body>
+</html>
