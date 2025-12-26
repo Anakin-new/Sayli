@@ -28,8 +28,11 @@ const ASSETS = [
      
 ];
 
-// Install Event
+// --- KEEP YOUR ASSETS LIST AT THE TOP ---
+
+// Install Event: Forces the new service worker to become active immediately
 self.addEventListener('install', (event) => {
+    self.skipWaiting(); 
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
             return cache.addAll(ASSETS);
@@ -37,7 +40,26 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Fetch Event
+// Activate Event: Cleans up old v1 cache and takes control of the app
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cache) => {
+                    if (cache !== CACHE_NAME) {
+                        console.log('Deleting old cache:', cache);
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        }).then(() => {
+            // This line forces all open windows/tabs to use the new version immediately
+            return self.clients.claim();
+        })
+    );
+});
+
+// Fetch Event: Serves files from cache or network
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request).then((response) => {
@@ -45,6 +67,7 @@ self.addEventListener('fetch', (event) => {
         })
     );
 });
+
 
 
 
